@@ -28,7 +28,7 @@ class ProductMain extends React.Component {
             <div className='button-create'>
                <Link to='/product/create'>
                   <button>
-                     Create new Product
+                     Create new Product.
                </button>
                </Link>
             </div>
