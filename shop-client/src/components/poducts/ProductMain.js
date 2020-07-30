@@ -25,9 +25,6 @@ class ProductMain extends React.Component {
       }
       return (
          <div className='product-main'>
-            <h1>sdcdcsdc</h1>
-            <h1>sdcdcsdc</h1>
-            <h1>sdcdcsdc</h1>
             <div className='button-create'>
                <Link to='/product/create'>
                   <button>
