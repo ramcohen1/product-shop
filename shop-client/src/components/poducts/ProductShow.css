@@ -1,0 +1,53 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+.body-text-product-show {
+   margin-top: 10%;
+}
+
+.body-text-product-show h1 {
+   text-align: center;
+}
+
+.body-text-product-show div {
+   position: relative;
+   text-align: center;
+   width: 90%;
+   padding: 0px 5%;
+   height: 350px;
+}
+
+.body-text-product-show div p {
+   position: absolute;
+   width: 40%;
+   top: 15%;
+}
+
+.body-text-product-show div button {
+   position: absolute;
+   bottom: 5%;
+   font-size: 120%;
+   left: 20%;
+}
+
+.body-text-product-show div div {
+   position: absolute;
+   bottom: -80%;
+   font-size: 120%;
+   right: -20%;
+}
+
+.body-text-product-show div img {
+   position: absolute;
+   bottom: 25%;
+   right: 20%;
+   width: 20%;
+}
+
+.edit-product-button {
+   position: absolute;
+   left: 30%;
+   top: 25%;
+}
