@@ -1,8 +1,9 @@
 const Product = require('../models/product')
 
-
 exports.postProduct = async (req, res) => {
-   const product = new Product(req.body)
+   const { body } = req
+
+   const product = new Product(body)
 
    try {
       const productSaved = await product.save()
@@ -17,31 +18,29 @@ exports.getAllProducts = async (req, res) => {
 
    try {
       if (names) {
-         const categories = JSON.parse(req.query.names)
+         const categoriesArr = JSON.parse(names)
+         let objProductFilter = {}
 
-         let categor = await Product.find({
-            "categories.category": { $in: categories }
-         })
-
-         console.log(categor)
-
-         if (!categor) {
-            return res.send([])
-         } else {
-            return res.send(categor)
+         if (categoriesArr.length > 0) {
+            objProductFilter = { "categories.category": { $in: categoriesArr } }
          }
-      }
-      const products = await Product.find({})
 
-      res.send(products)
+         const products = await Product.find(objProductFilter)
+
+         if (!products) return res.send([])
+
+         return res.send(products)
+      }
    } catch (e) {
       res.status(500).send(e)
    }
 }
 
 exports.getProduct = async (req, res) => {
+   const { id } = req.params
+
    try {
-      const product = await Product.findById(req.params.id)
+      const product = await Product.findById(id)
 
       if (!product) return res.status(404).send()
 
@@ -99,15 +98,16 @@ exports.postPhotoOfProduct = async (req, res) => {
 }
 
 exports.getPhotoOfProduct = async (req, res) => {
+   const { id } = req.params
    try {
-      const product = await Product.findById(req.params.id)
+      const product = await Product.findById(id)
+      console.log(product)
 
       if (!product || !product.photo) {
          throw new Error()
       }
 
-      res.set('Content-Type', 'image-jpg')
-
+      res.set('Content-Type', 'image/jpg')
       res.send(product.photo)
    } catch (error) {
       res.status(404).send()

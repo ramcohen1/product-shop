@@ -1,6 +1,5 @@
 const User = require('../models/user')
 
-
 exports.postUser = async (req, res) => {
    const user = new User(req.body)
 

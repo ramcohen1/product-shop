@@ -11,7 +11,7 @@ class ProductMain extends React.Component {
 
    componentDidMount = async () => {
       try {
-         const { data } = await apiShop.get('/products')
+         const { data } = await apiShop.get('/products?names=[]')
 
          this.setState({ productsArr: data })
       } catch (e) {
